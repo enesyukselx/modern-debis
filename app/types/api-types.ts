@@ -32,17 +32,6 @@ export interface IStudent {
     advisor?: string;
 }
 
-type TResultName =
-    | "Vize"
-    | "Final"
-    | "Bütünleme Notu"
-    | "Ödev"
-    | "Quiz"
-    | "Vize / Ödev"
-    | "Yarıyıl Sonu Başarı Notu"
-    | "Bütünleme Sonu Başarı Notu"
-    | "Başarı Notu";
-
 type TResult = {
     name: string;
     avarage?: string;
@@ -50,8 +39,6 @@ type TResult = {
 };
 
 export interface ICourseArr {
-    name?: TResultName;
-    avarage?: string;
     results?: TResult[];
     credit?: string;
     type?: string;
