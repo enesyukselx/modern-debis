@@ -1,6 +1,10 @@
 import { cookies } from "next/headers";
 
-const getData = async (courseId, semesterId) => {
+interface ICourseDetailsProps {
+    slugs: string[];
+}
+
+const getData = async (courseId: string, semesterId: string) => {
     const cookieStore = cookies();
 
     const response = await fetch(
@@ -16,12 +20,12 @@ const getData = async (courseId, semesterId) => {
         }
     );
     if (!response.ok) {
-        throw new Error(`Could not fetch, received ${res.status}`);
+        throw new Error(`Could not fetch, received ${response.status}`);
     }
     return response.json();
 };
 
-const CourseDetails = async ({ slugs }) => {
+const CourseDetails = async ({ slugs }: ICourseDetailsProps) => {
     const data = await getData(
         decodeURIComponent(slugs[1]),
         decodeURIComponent(slugs[0])
@@ -50,7 +54,7 @@ const CourseDetails = async ({ slugs }) => {
                 </div>
             </div>
             <div className="grid grid-cols-2 gap-2 mt-2">
-                {course.results.map((result, index) => {
+                {course.results.map((result: any, index: number) => {
                     if (result.result === "") return;
 
                     return (

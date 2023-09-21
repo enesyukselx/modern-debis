@@ -5,7 +5,7 @@ import {
     LiaAngleDoubleLeftSolid,
 } from "react-icons/lia";
 
-const Schedule = ({ schedule }) => {
+const Schedule = ({ schedule }: any) => {
     const days = [
         { name: "Pazartesi", value: 0, path: "monday", count: 0 },
         { name: "Salı", value: 1, path: "tuesday", count: 0 },
@@ -41,7 +41,7 @@ const Schedule = ({ schedule }) => {
                 />
             </div>
 
-            {schedule.map((item, index) => {
+            {schedule.map((item: any, index: number) => {
                 const selectedDay = days[selected].path;
                 const course = item[selectedDay].split("-")[1];
 

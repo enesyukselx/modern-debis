@@ -1,7 +1,14 @@
 "use client";
 import { useRouter } from "next/navigation";
 
-const SelectSemester = ({ semesters }) => {
+interface ISelectSemesterProps {
+    semesters: {
+        text: string;
+        value: string;
+    }[];
+}
+
+const SelectSemester = ({ semesters }: ISelectSemesterProps) => {
     const router = useRouter();
     return (
         <select
