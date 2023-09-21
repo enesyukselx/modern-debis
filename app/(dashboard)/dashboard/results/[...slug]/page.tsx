@@ -1,6 +1,7 @@
 import { cn } from "@/app/utils/cn";
 import { cookies } from "next/headers";
 import Link from "next/link";
+import CourseDetails from "../components/CourseDetails";
 
 const getData = async (slug) => {
     const cookieStore = cookies();
@@ -39,7 +40,7 @@ const Page = async ({ params }) => {
                                 "block py-5 px-6 mb-2 rounded bg-slate-300 font-bold cursor-pointer hover:bg-slate-200",
                                 "",
                                 {
-                                    "bg-slate-100 border-2 border-slate-300":
+                                    "bg-slate-100 border-2 border-slate-300 hover:bg-slate-100":
                                         course.value ===
                                         decodeURIComponent(params.slug[1]),
                                 }
@@ -49,7 +50,7 @@ const Page = async ({ params }) => {
                             <span>{course.text}</span>
                             {course.value ===
                                 decodeURIComponent(params.slug[1]) && (
-                                <div>Selected</div>
+                                <CourseDetails slugs={params.slug} />
                             )}
                         </Link>
                     );
