@@ -1,13 +1,10 @@
-import axios, { AxiosResponse } from "axios";
 import cheerio from "cheerio";
 import { NextRequest } from "next/server";
-import iconv from "iconv-lite";
 import qs from "querystring";
 import {
     TSemester,
     TSession,
     TCourse,
-    IConfig,
     ICourseArr,
 } from "@/app/types/api-types";
 import debisApi from "@/app/utils/api/debisApi";

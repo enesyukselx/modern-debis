@@ -1,14 +1,7 @@
-import axios, { AxiosResponse } from "axios";
 import { NextRequest } from "next/server";
 import qs from "querystring";
 
-import {
-    ISession,
-    TPassword,
-    TUserName,
-    ILoginData,
-    IConfig,
-} from "@/app/types/api-types";
+import { ISession, TPassword, TUserName } from "@/app/types/api-types";
 import debisApi from "@/app/utils/api/debisApi";
 
 let session: ISession = {};
