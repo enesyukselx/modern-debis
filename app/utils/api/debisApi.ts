@@ -14,8 +14,8 @@ const debisApi = async (
         responseType: "arraybuffer",
     };
 
-    if (method === "GET") {
-        try {
+    try {
+        if (method === "GET") {
             const response: AxiosResponse = await axios.get(
                 "https://debis.deu.edu.tr/" + url,
                 axiosGetConfig
@@ -25,10 +25,9 @@ const debisApi = async (
                 data: iconv.decode(response.data, "ISO-8859-9"),
                 cookie: response.headers,
             };
-        } catch (err) {
-            console.log(err);
-            return null;
         }
+    } catch (err) {
+        console.log(err);
     }
 };
 
