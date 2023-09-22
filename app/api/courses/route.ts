@@ -1,9 +1,8 @@
-import axios, { AxiosResponse } from "axios";
 import { NextRequest } from "next/server";
 import cheerio from "cheerio";
-import iconv from "iconv-lite";
 import qs from "querystring";
-import { IConfig, TSemester, TSession } from "@/app/types/api-types";
+import { TSemester, TSession } from "@/app/types/api-types";
+import debisApi from "@/app/utils/api/debisApi";
 
 export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
@@ -18,46 +17,34 @@ export async function GET(request: NextRequest) {
         );
     }
 
-    try {
-        const semesterData = qs.stringify({
-            ogretim_donemi_id: semester,
-        });
+    const semesterData = qs.stringify({
+        ogretim_donemi_id: semester,
+    });
 
-        const config: IConfig = {
-            headers: {
-                Cookie: "PHPSESSID=" + session,
-                Host: "debis.deu.edu.tr",
-                "Content-Type": "application/x-www-form-urlencoded",
-            },
-            responseType: "arraybuffer",
+    const response: any = await debisApi(
+        "POST",
+        "OgrenciIsleri/Ogrenci/OgrenciNotu/index.php",
+        { Cookie: `PHPSESSID=${session}` },
+        semesterData
+    );
+
+    const $ = cheerio.load(response.iconv, {
+        decodeEntities: false,
+    });
+    const optionsArray: { value?: string; text?: string }[] = [];
+    const options = $("#ders").find("option");
+    options.each((i, element) => {
+        const option = {
+            value: $(element).attr("value"),
+            text: $(element).text(),
         };
+        optionsArray.push(option);
+    });
+    optionsArray.shift();
 
-        const response = await axios.post(
-            "https://debis.deu.edu.tr/OgrenciIsleri/Ogrenci/OgrenciNotu/index.php",
-            semesterData,
-            config
-        );
-        const decodedBody = iconv.decode(response.data, "ISO-8859-9");
-        const $ = cheerio.load(decodedBody, {
-            decodeEntities: false,
-        });
-        const optionsArray: { value?: string; text?: string }[] = [];
-        const options = $("#ders").find("option");
-        options.each((i, element) => {
-            const option = {
-                value: $(element).attr("value"),
-                text: $(element).text(),
-            };
-            optionsArray.push(option);
-        });
-        optionsArray.shift();
-
-        return new Response(
-            JSON.stringify({
-                courses: optionsArray,
-            })
-        );
-    } catch (error) {
-        console.error(error);
-    }
+    return new Response(
+        JSON.stringify({
+            courses: optionsArray,
+        })
+    );
 }

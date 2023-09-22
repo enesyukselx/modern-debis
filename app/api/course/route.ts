@@ -10,6 +10,7 @@ import {
     IConfig,
     ICourseArr,
 } from "@/app/types/api-types";
+import debisApi from "@/app/utils/api/debisApi";
 
 export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
@@ -26,49 +27,23 @@ export async function GET(request: NextRequest) {
     }
 
     try {
-        const semesterData = qs.stringify({
-            ogretim_donemi_id: semester,
-        });
-
-        const config: IConfig = {
-            headers: {
-                Cookie: "PHPSESSID=" + session,
-                Host: "debis.deu.edu.tr",
-                "Content-Type": "application/x-www-form-urlencoded",
-            },
-            responseType: "arraybuffer",
-        };
-
-        const response: AxiosResponse = await axios.post(
-            "https://debis.deu.edu.tr/OgrenciIsleri/Ogrenci/OgrenciNotu/index.php",
-            semesterData,
-            config
-        );
-        const decodedBody = iconv.decode(response.data, "ISO-8859-9"); // Convert Latin1 to UTF-8
-        const $ = cheerio.load(decodedBody, {
-            decodeEntities: false,
-        });
         const courseData = qs.stringify({
             ogretim_donemi_id: semester,
             ders: course,
         });
 
-        const courseResponse = await axios.post(
-            "https://debis.deu.edu.tr/OgrenciIsleri/Ogrenci/OgrenciNotu/index.php",
-            courseData,
-            config
+        const response: any = await debisApi(
+            "POST",
+            "OgrenciIsleri/Ogrenci/OgrenciNotu/index.php",
+            { Cookie: `PHPSESSID=${session}` },
+            courseData
         );
 
-        const decodedCourseBody = iconv.decode(
-            courseResponse.data,
-            "ISO-8859-9"
-        );
-
-        const $$ = cheerio.load(decodedCourseBody, {
+        const $ = cheerio.load(response.iconv, {
             decodeEntities: false,
         });
 
-        const table = $$(
+        const table = $(
             'table[style="margin-top:10px"] > tbody > tr > td > table'
         );
 

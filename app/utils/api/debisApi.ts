@@ -25,6 +25,7 @@ const debisApi = async (
         return {
             data: response.data,
             iconv: iconv.decode(response.data, "ISO-8859-9"),
+            headers: response.headers,
         };
     } catch (error) {
         console.error(error);

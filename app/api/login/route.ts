@@ -9,6 +9,7 @@ import {
     ILoginData,
     IConfig,
 } from "@/app/types/api-types";
+import debisApi from "@/app/utils/api/debisApi";
 
 let session: ISession = {};
 
@@ -23,25 +24,13 @@ export async function GET(request: NextRequest) {
         );
     }
 
-    const data: ILoginData = {
+    const loginData: string = qs.stringify({
         username: userName,
         password: password,
         emailHost: "ogr.deu.edu.tr",
-    };
+    });
 
-    const loginData: string = qs.stringify({ ...data });
-
-    const config: IConfig = {
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-        },
-    };
-
-    const response: AxiosResponse = await axios.post(
-        "https://debis.deu.edu.tr/debis.php",
-        loginData,
-        config
-    );
+    const response: any = await debisApi("POST", "debis.php", {}, loginData);
 
     const cookie = response.headers["set-cookie"]![0].split(";")[0];
 
