@@ -20,12 +20,10 @@ export async function GET(request: NextRequest) {
     const response: any = await debisApi(
         "GET",
         "OgrenciIsleri/Ogrenci/OgrenciNotu/index.php",
-        {
-            sessionId: session,
-        }
+        { Cookie: `PHPSESSID=${session}` }
     );
 
-    const $ = cheerio.load(response.data, {
+    const $ = cheerio.load(response.iconv, {
         decodeEntities: false,
     });
 
