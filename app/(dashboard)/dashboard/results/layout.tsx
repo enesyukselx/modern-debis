@@ -18,11 +18,12 @@ const getData = async () => {
 
 const Layout = async ({ children }: { children: ReactNode }) => {
     const data = await getData();
+
     return (
         <>
             <h1 className="text-4xl">Notlarım</h1>
             <SelectSemester semesters={data.semesters} />
-            <div className="mt-4">{children}</div>
+            {children}
         </>
     );
 };
