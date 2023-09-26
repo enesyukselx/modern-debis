@@ -7,14 +7,6 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const session: TSession = searchParams.get("session");
 
-    if (!session) {
-        return new Response(
-            JSON.stringify({
-                error: "Session is missing",
-            })
-        );
-    }
-
     const response: any = await debisApi(
         "GET",
         "OgrenciIsleri/Ogrenci/DersProgrami/index.php",

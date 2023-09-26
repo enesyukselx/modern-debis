@@ -1,26 +1,17 @@
 import { NextRequest } from "next/server";
 import cheerio from "cheerio";
-import { IStudent, TSession } from "@/app/types/api-types";
+import { IStudent } from "@/app/types/api-types";
 import debisApi from "@/app/utils/api/debisApi";
+import getParams from "@/app/utils/api/getParams";
 
 export async function GET(request: NextRequest) {
-    const { searchParams } = new URL(request.url);
-    const session: TSession = searchParams.get("session");
-
-    if (!session) {
-        return new Response(
-            JSON.stringify({
-                error: "Session is not defined",
-            })
-        );
-    }
-
+    const params = getParams(request, "session");
     const student: IStudent = {};
 
     const response: any = await debisApi(
         "GET",
         "OgrenciIsleri/Ogrenci/OgrenciNotu/index.php",
-        { Cookie: `PHPSESSID=${session}` }
+        { Cookie: `PHPSESSID=${params[0]}` }
     );
 
     const $ = cheerio.load(response.iconv, {

@@ -21,7 +21,7 @@ const debisApi = async (
     };
 
     try {
-        const response = await axios(config);
+        const response: AxiosResponse = await axios(config);
         return {
             data: response.data,
             iconv: iconv.decode(response.data, "ISO-8859-9"),

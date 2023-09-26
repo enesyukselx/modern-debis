@@ -3,23 +3,22 @@ import qs from "querystring";
 
 import { ISession, TPassword, TUserName } from "@/app/types/api-types";
 import debisApi from "@/app/utils/api/debisApi";
+import getParams from "@/app/utils/api/getParams";
 
 let session: ISession = {};
 
 export async function GET(request: NextRequest) {
-    const { searchParams } = new URL(request.url);
-    const userName: TUserName = searchParams.get("username");
-    const password: TPassword = searchParams.get("password");
+    const params = getParams(request, "username", "password");
 
-    if (!userName || !password) {
+    if (!params[0] || !params[1]) {
         return new Response(
             JSON.stringify({ error: "Missing userName or password" })
         );
     }
 
     const loginData: string = qs.stringify({
-        username: userName,
-        password: password,
+        username: params[0],
+        password: params[1],
         emailHost: "ogr.deu.edu.tr",
     });
 

@@ -1,30 +1,20 @@
 import { NextRequest } from "next/server";
 import cheerio from "cheerio";
 import qs from "querystring";
-import { TSemester, TSession } from "@/app/types/api-types";
 import debisApi from "@/app/utils/api/debisApi";
+import getParams from "@/app/utils/api/getParams";
 
 export async function GET(request: NextRequest) {
-    const { searchParams } = new URL(request.url);
-    const session: TSession = searchParams.get("session");
-    const semester: TSemester = searchParams.get("semester");
-
-    if (!session || !semester) {
-        return new Response(
-            JSON.stringify({
-                error: "Session or semester is missing",
-            })
-        );
-    }
+    const params = getParams(request, "session", "semester");
 
     const semesterData = qs.stringify({
-        ogretim_donemi_id: semester,
+        ogretim_donemi_id: params[1],
     });
 
     const response: any = await debisApi(
         "POST",
         "OgrenciIsleri/Ogrenci/OgrenciNotu/index.php",
-        { Cookie: `PHPSESSID=${session}` },
+        { Cookie: `PHPSESSID=${params[0]}` },
         semesterData
     );
 
