@@ -71,8 +71,8 @@ const CourseDetails = ({
             </div>
             <div
                 className={
-                    (clicked ? "max-h-96" : "max-h-0") +
-                    " overflow-hidden transition-all duration-1000 ease-linear"
+                    (clicked && !loading ? "max-h-96" : "max-h-0") +
+                    " overflow-hidden transition-all duration-300 ease-linear"
                 }
             >
                 {clicked && !loading && (
