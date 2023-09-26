@@ -45,7 +45,7 @@ const CourseDetails = ({
             }}
         >
             <div>
-                <span className="font-bold flex gap-2">
+                <span className="font-bold text-xs md:text-base flex gap-2">
                     {courseTitle}
                     {clicked && loading && (
                         <span>
@@ -72,25 +72,25 @@ const CourseDetails = ({
             <div
                 className={
                     (clicked && !loading ? "max-h-96" : "max-h-0") +
-                    " overflow-hidden transition-all duration-300 ease-linear"
+                    " overflow-hidden transition-all duration-300 ease-linear text-[0.6rem] md:text-xs"
                 }
             >
                 {clicked && !loading && (
                     <>
                         <div className="grid grid-cols-2 gap-2">
-                            <div className="bg-slate-200 text-center py-1 rounded mt-2 border-2 border-gray-300 text-xs">
+                            <div className="bg-slate-200 text-center py-1 rounded mt-2 border-2 border-gray-300">
                                 <span className="font-bold">Kredi: </span>
                                 {course.credit}
                             </div>
-                            <div className="bg-slate-200 text-center py-1 rounded mt-2 border-2 border-gray-300 text-xs">
+                            <div className="bg-slate-200 text-center py-1 rounded mt-2 border-2 border-gray-300">
                                 <span className="font-bold">Ders Türü: </span>
                                 {course.type}
                             </div>
                         </div>
-                        <div className=" bg-slate-200 text-center py-1 rounded mt-2 border-2 border-gray-300 text-xs">
+                        <div className=" bg-slate-200 text-center py-1 rounded mt-2 border-2 border-gray-300">
                             <div>{course.professor}</div>
                         </div>
-                        <div className=" bg-slate-200 text-center py-1 rounded mt-2 border-2 border-gray-300 text-xs">
+                        <div className=" bg-slate-200 text-center py-1 rounded mt-2 border-2 border-gray-300">
                             <div>
                                 <span className="font-bold">Ders durumu: </span>{" "}
                                 {course.status}
@@ -103,7 +103,7 @@ const CourseDetails = ({
 
                                     return (
                                         <div
-                                            className="bg-slate-200 text-center py-1 rounded border-2 border-gray-300 text-xs"
+                                            className="bg-slate-200 text-center py-1 rounded border-2 border-gray-300"
                                             key={index}
                                         >
                                             <div>

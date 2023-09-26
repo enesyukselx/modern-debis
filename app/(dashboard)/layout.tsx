@@ -19,12 +19,12 @@ export default function DashboardLayout({
     if (!cookieStore.has("student")) redirect("/");
 
     return (
-        <div className="py-14 px-20">
-            <div className="grid grid-cols-4 gap-10 px-10 py-10 rounded-lg bg-white">
+        <div className="py-4 px-4 md:py-14 md:px-20">
+            <div className="grid md:grid-cols-4 gap-4 md:gap-10 px-10 py-10 rounded-lg bg-white">
                 <div className="col-span-1">
                     <Menu />
                 </div>
-                <div className="col-span-2">{children}</div>
+                <div className="md:col-span-2">{children}</div>
                 <div className="col-span-1">
                     <UserDetails />
                 </div>
