@@ -6,7 +6,7 @@ const Menu = () => {
             <ul>
                 <MenuItem href="/dashboard" title="Ders Programı" />
                 <MenuItem href="/dashboard/results" title="Notlarım" />
-                <MenuItem href="/" title="Çıkış Yap" />
+                <MenuItem href="/logout" title="Çıkış Yap" />
             </ul>
         </div>
     );

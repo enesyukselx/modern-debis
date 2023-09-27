@@ -16,6 +16,8 @@ const MustBeLogin = ({ children }: { children: React.ReactNode }) => {
                     Cookies.get("sessionId")
             );
             if (response.data.student.name === "") {
+                Cookies.remove("sessionId");
+                Cookies.remove("student");
                 router.push("/");
             }
         };
