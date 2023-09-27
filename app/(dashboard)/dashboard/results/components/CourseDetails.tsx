@@ -77,26 +77,26 @@ const CourseDetails = ({
             >
                 {clicked && !loading && (
                     <>
-                        <div className="grid grid-cols-2 gap-2">
-                            <div className="bg-slate-200 text-center py-1 rounded mt-2 border-2 border-gray-300">
+                        <div className="grid md:grid-cols-2 gap-1 md:gap-2">
+                            <div className="bg-slate-200 text-center py-1 rounded mt-1 md:mt-2 border-2 border-gray-300">
                                 <span className="font-bold">Kredi: </span>
                                 {course.credit}
                             </div>
-                            <div className="bg-slate-200 text-center py-1 rounded mt-2 border-2 border-gray-300">
+                            <div className="bg-slate-200 text-center py-1 rounded mt-1 md:mt-2 border-2 border-gray-300">
                                 <span className="font-bold">Ders Türü: </span>
                                 {course.type}
                             </div>
                         </div>
-                        <div className=" bg-slate-200 text-center py-1 rounded mt-2 border-2 border-gray-300">
+                        <div className=" bg-slate-200 text-center py-1 rounded mt-1 md:mt-2 border-2 border-gray-300">
                             <div>{course.professor}</div>
                         </div>
-                        <div className=" bg-slate-200 text-center py-1 rounded mt-2 border-2 border-gray-300">
+                        <div className=" bg-slate-200 text-center py-1 rounded mt-1 md:mt-2 border-2 border-gray-300">
                             <div>
                                 <span className="font-bold">Ders durumu: </span>{" "}
                                 {course.status}
                             </div>
                         </div>
-                        <div className="grid grid-cols-2 gap-2 mt-2">
+                        <div className="grid md:grid-cols-2 gap-1 md:gap-2 mt-1 md:mt-2">
                             {course.results.map(
                                 (result: any, index: number) => {
                                     if (result.result === "") return;

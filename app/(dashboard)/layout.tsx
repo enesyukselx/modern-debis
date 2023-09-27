@@ -20,7 +20,7 @@ export default function DashboardLayout({
     if (!cookieStore.has("student")) redirect("/");
 
     return (
-        <MustBeLogin>
+        <MustBeLogin apiUrl={process.env.API_URL}>
             <div className="py-4 px-4 md:py-14 md:px-20">
                 <div className="grid md:grid-cols-4 gap-4 md:gap-10 px-10 py-10 rounded-lg bg-white">
                     <div className="col-span-1">

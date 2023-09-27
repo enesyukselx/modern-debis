@@ -5,15 +5,20 @@ import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import axios from "axios";
 
-const MustBeLogin = ({ children }: { children: React.ReactNode }) => {
+const MustBeLogin = ({
+    children,
+    apiUrl,
+}: {
+    children: React.ReactNode;
+    apiUrl?: string;
+}) => {
     const params = useParams();
     const router = useRouter();
 
     useEffect(() => {
         const fetch = async () => {
             const response = await axios.get(
-                "http://localhost:3000/api/info?session=" +
-                    Cookies.get("sessionId")
+                apiUrl + "info?session=" + Cookies.get("sessionId")
             );
             if (response.data.student.name === "") {
                 Cookies.remove("sessionId");
@@ -23,7 +28,7 @@ const MustBeLogin = ({ children }: { children: React.ReactNode }) => {
         };
 
         fetch();
-    }, [params, router]);
+    }, [params, router, apiUrl]);
 
     return children;
 };
