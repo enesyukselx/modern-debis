@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
 
 type FormValues = {
     email: string;
@@ -56,8 +57,8 @@ const Form = () => {
                 toast.error("Email veya şifre hatalı");
             } else {
                 toast.success("Giriş işlemi başarılı.");
-                document.cookie = "sessionId=" + sessionId;
-                document.cookie = "student=" + JSON.stringify(infoData.student);
+                Cookies.set("sessionId", sessionId);
+                Cookies.set("student", JSON.stringify(infoData.student));
                 router.push("/dashboard");
             }
         }

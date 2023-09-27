@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 
 import Menu from "./components/Menu";
 import UserDetails from "./components/UserDetails";
+import MustBeLogin from "./components/Auth/MustBeLogin";
 
 export const metadata: Metadata = {
     title: "Create Next App",
@@ -19,16 +20,18 @@ export default function DashboardLayout({
     if (!cookieStore.has("student")) redirect("/");
 
     return (
-        <div className="py-4 px-4 md:py-14 md:px-20">
-            <div className="grid md:grid-cols-4 gap-4 md:gap-10 px-10 py-10 rounded-lg bg-white">
-                <div className="col-span-1">
-                    <Menu />
-                </div>
-                <div className="md:col-span-2">{children}</div>
-                <div className="col-span-1">
-                    <UserDetails />
+        <MustBeLogin>
+            <div className="py-4 px-4 md:py-14 md:px-20">
+                <div className="grid md:grid-cols-4 gap-4 md:gap-10 px-10 py-10 rounded-lg bg-white">
+                    <div className="col-span-1">
+                        <Menu />
+                    </div>
+                    <div className="md:col-span-2">{children}</div>
+                    <div className="col-span-1">
+                        <UserDetails />
+                    </div>
                 </div>
             </div>
-        </div>
+        </MustBeLogin>
     );
 }
