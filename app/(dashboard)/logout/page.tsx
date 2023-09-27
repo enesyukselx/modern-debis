@@ -8,7 +8,7 @@ const Logout = () => {
     if (Cookies.get("sessionId") || Cookies.get("student")) {
         Cookies.remove("sessionId");
         Cookies.remove("student");
-        router.push("/");
+        router.prefetch("/");
     }
 
     return null;
