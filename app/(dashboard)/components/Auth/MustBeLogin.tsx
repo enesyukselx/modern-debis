@@ -5,13 +5,7 @@ import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import axios from "axios";
 
-const MustBeLogin = ({
-    children,
-    apiUrl,
-}: {
-    children: React.ReactNode;
-    apiUrl?: string;
-}) => {
+const MustBeLogin = ({ apiUrl }: { apiUrl?: string }) => {
     const params = useParams();
     const router = useRouter();
 
@@ -30,7 +24,7 @@ const MustBeLogin = ({
         fetch();
     }, [params, router, apiUrl]);
 
-    return children;
+    return <></>;
 };
 
 export default MustBeLogin;
