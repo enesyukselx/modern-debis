@@ -1,4 +1,5 @@
 "use client";
+import fixTrChars from "@/app/utils/fixtrchars";
 import { useState } from "react";
 import {
     LiaAngleDoubleRightSolid,
@@ -55,7 +56,7 @@ const Schedule = ({ schedule }: any) => {
                             className="py-5 px-6 mb-2 rounded bg-slate-300 grid grid-cols-4 justify-between"
                         >
                             <div className="col-span-3 font-bold">
-                                {course.split(".")[0].slice(0, -1)}
+                                {fixTrChars(course.split(".")[0].slice(0, -1))}
                             </div>
                             <div className="col-span-1 text-end font-base">
                                 {item.time}
