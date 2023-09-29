@@ -9,6 +9,9 @@ const MustBeLogin = ({ apiUrl }: { apiUrl?: string }) => {
     const params = useParams();
     const router = useRouter();
 
+    if (Cookies.get("sessionId") === undefined) router.push("/");
+    if (Cookies.get("student") === undefined) router.push("/");
+
     useEffect(() => {
         const fetch = async () => {
             const response = await axios.get(
