@@ -53,7 +53,7 @@ const Schedule = ({ schedule }: any) => {
                     item[selectedDay].trim() !== "" && (
                         <div
                             key={index}
-                            className="py-5 px-6 mb-2 rounded bg-slate-300 grid grid-cols-4 justify-between"
+                            className="py-5 px-6 mb-2 rounded-lg shadow-md bg-gray-200 grid grid-cols-4 justify-between"
                         >
                             <div className="md:col-span-3 col-span-4 font-bold">
                                 {fixTrChars(course.split(".")[0].slice(0, -1))}
@@ -66,7 +66,7 @@ const Schedule = ({ schedule }: any) => {
                 );
             })}
             {days[selected].count === 0 && (
-                <div className="py-5 px-6 mb-2 rounded bg-orange-200 font-bold">
+                <div className="py-5 px-6 mb-2 rounded-xl bg-red-600 text-white font-bold">
                     {days[selected].name} günü için ders bulunamadı.
                 </div>
             )}

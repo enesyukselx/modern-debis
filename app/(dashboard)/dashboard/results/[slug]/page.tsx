@@ -49,7 +49,7 @@ const Page = async ({ params }: { params: { slug: string } }) => {
                     }
                 )
             ) : (
-                <div className="py-5 px-6 mb-2 rounded bg-red-200 font-bold">
+                <div className="py-5 px-6 mb-2 mt-4 rounded-xl bg-red-600 text-white font-bold">
                     Bu döneme ait ders bulunamadı!
                 </div>
             )}

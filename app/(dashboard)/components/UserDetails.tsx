@@ -15,14 +15,14 @@ const UserDetails = () => {
                 {fixTrChars(student.department)}
             </span>
 
-            <div className="mt-4 p-2 bg-slate-200 rounded text-center text-sm font-bold">
+            <div className="mt-4 p-2 bg-gray-200 rounded-lg text-center text-sm font-bold">
                 {fixTrChars(student.year)}
             </div>
-            <div className="mt-2 p-2 bg-slate-200 rounded text-center text-sm font-bold">
+            <div className="mt-2 p-2 bg-gray-200 rounded-lg text-center text-sm font-bold">
                 {student.number}
             </div>
-            <div className="mt-2 p-2 bg-slate-200 rounded text-center text-sm font-bold">
-                Danışman: {fixTrChars(student.advisor)}
+            <div className="mt-2 p-2 bg-gray-200 rounded-lg text-center text-xs font-bold">
+                DANIŞMAN: {fixTrChars(student.advisor)}
             </div>
         </div>
     );
