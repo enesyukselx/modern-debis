@@ -21,7 +21,7 @@ export default function DashboardLayout({
 
     return (
         <div className="py-4 px-4 md:py-14 md:px-20">
-            <MustBeLogin apiUrl={process.env.API_URL} />
+            <MustBeLogin apiUrl={process.env.PUBLIC_API_URL} />
             <div className="grid md:grid-cols-4 gap-4 md:gap-10 px-10 py-10 rounded-lg bg-white">
                 <div className="col-span-1">
                     <Menu />

@@ -36,7 +36,7 @@ const Page = async ({ params }: { params: { slug: string } }) => {
                                 {course.value && (
                                     <CourseDetails
                                         courseTitle={course.text}
-                                        apiUrl={process.env.API_URL!}
+                                        apiUrl={process.env.PUBLIC_API_URL!}
                                         value={course.value}
                                         sessionId={
                                             cookies().get("sessionId")!.value
