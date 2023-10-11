@@ -39,7 +39,7 @@ const CourseDetails = ({
 
     return (
         <div
-            className="block py-5 px-6 mb-2 rounded bg-slate-300 font-bold cursor-pointer mt-4"
+            className="block py-5 px-6 mb-2 rounded-xl bg-gray-200 font-bold cursor-pointer mt-4"
             onClick={() => {
                 setClicked(!clicked);
             }}
@@ -77,33 +77,33 @@ const CourseDetails = ({
             >
                 {clicked && !loading && (
                     <>
-                        <div className="grid md:grid-cols-2 gap-1 md:gap-2 mt-2">
-                            <div className="bg-slate-200 text-center py-1 rounded mt-1 md:mt-2 border-2 border-gray-300">
+                        <div className="grid md:grid-cols-2 gap-1 mt-1">
+                            <div className="bg-white text-center py-1 rounded-lg ">
                                 <span className="font-bold">Kredi: </span>
                                 {course.credit}
                             </div>
-                            <div className="bg-slate-200 text-center py-1 rounded mt-1 md:mt-2 border-2 border-gray-300">
+                            <div className="bg-white text-center py-1 rounded-lg ">
                                 <span className="font-bold">Ders Türü: </span>
                                 {course.type}
                             </div>
                         </div>
-                        <div className=" bg-slate-200 text-center py-1 rounded mt-1 md:mt-2 border-2 border-gray-300">
+                        <div className="bg-white text-center py-1 rounded-lg mt-1">
                             <div>{course.professor}</div>
                         </div>
-                        <div className=" bg-slate-200 text-center py-1 rounded mt-1 md:mt-2 border-2 border-gray-300">
+                        <div className="bg-white text-center py-1 rounded-lg mt-1">
                             <div>
                                 <span className="font-bold">Ders durumu: </span>{" "}
                                 {course.status}
                             </div>
                         </div>
-                        <div className="grid md:grid-cols-2 gap-1 md:gap-2 mt-1 md:mt-2">
+                        <div className="grid md:grid-cols-2 gap-x-1 mt-1 ">
                             {course.results.map(
                                 (result: any, index: number) => {
                                     if (result.result === "") return;
 
                                     return (
                                         <div
-                                            className="bg-slate-200 text-center py-1 rounded border-2 border-gray-300"
+                                            className="bg-white text-center py-1 rounded-lg mb-1"
                                             key={index}
                                         >
                                             <div>
