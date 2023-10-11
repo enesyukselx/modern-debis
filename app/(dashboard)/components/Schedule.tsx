@@ -55,10 +55,10 @@ const Schedule = ({ schedule }: any) => {
                             key={index}
                             className="py-5 px-6 mb-2 rounded bg-slate-300 grid grid-cols-4 justify-between"
                         >
-                            <div className="col-span-3 font-bold">
+                            <div className="md:col-span-3 col-span-4 font-bold">
                                 {fixTrChars(course.split(".")[0].slice(0, -1))}
                             </div>
-                            <div className="col-span-1 text-end font-base">
+                            <div className="md:col-span-1 col-span-4 text-end font-base">
                                 {item.time}
                             </div>
                         </div>

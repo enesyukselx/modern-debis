@@ -45,7 +45,7 @@ const CourseDetails = ({
             }}
         >
             <div>
-                <span className="font-bold text-xs md:text-base flex gap-2">
+                <span className="font-bold text-base flex gap-2">
                     {courseTitle}
                     {clicked && loading && (
                         <span>
@@ -72,12 +72,12 @@ const CourseDetails = ({
             <div
                 className={
                     (clicked && !loading ? "max-h-96" : "max-h-0") +
-                    " overflow-hidden transition-all duration-300 ease-linear text-[0.6rem] md:text-xs"
+                    " overflow-hidden transition-all duration-300 ease-linear text-[.7rem] md:text-xs"
                 }
             >
                 {clicked && !loading && (
                     <>
-                        <div className="grid md:grid-cols-2 gap-1 md:gap-2">
+                        <div className="grid md:grid-cols-2 gap-1 md:gap-2 mt-2">
                             <div className="bg-slate-200 text-center py-1 rounded mt-1 md:mt-2 border-2 border-gray-300">
                                 <span className="font-bold">Kredi: </span>
                                 {course.credit}

@@ -8,8 +8,10 @@ const UserDetails = () => {
 
     return (
         <div>
-            <h1 className="font-bold mb-1">{fixTrChars(student.name)}</h1>
-            <span className="block text-orange-400 text-sm font-bold">
+            <h1 className="font-bold text-lg mb-1">
+                {fixTrChars(student.name)}
+            </h1>
+            <span className="block text-orange-400 text-base font-bold">
                 {fixTrChars(student.department)}
             </span>
 
